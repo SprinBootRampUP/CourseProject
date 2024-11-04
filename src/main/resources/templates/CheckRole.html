@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <title>Home</title>
+</head>
+<body>
+<h2>Courses</h2>
+
+<p>Name      <span th:text="${name}">Not found</span>    </p>
+<p>isAuthenticated   <span th:text="${isAuthenticated}">Not found</span>  </p>
+<p>roles    <span th:text="${roles}">Not found</span>   </p>
+<p>roles    <span th:text="${id}">Not found</span>   </p>
+
+
+<form th:action="@{/logout}" method="post">
+    <button type="submit">Logout</button>
+</form>
+</body>
+</html>

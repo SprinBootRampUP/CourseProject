@@ -1,0 +1,116 @@
+Summary Table
+Feature	                       spring-web	               | spring-boot-starter-web
+Basic Web Components	 (manual setup)	                    | (auto-configured)
+Embedded Server	         (requires external server setup)	 |    (comes with Tomcat, Jetty, or Undertow)
+Auto-configuration
+REST API Development		                                  |    (simplified with Jackson auto-config)
+Spring Boot Features                                    (with simplified setup and Spring Boot support)
+
+
+
+
+
+
+JPA entity
+
+@Entity
+@Table(name="")
+@Column(name="")
+@Transient - fields won't persist to table
+
+
+
+Use "Integer" instead of "int" in entities
+Default value of int is 0 and Integer is "null"
+In row insertion  JPA checks the table with the ID value, if it is 0(default)- it won't find it
+but if Id is null , insertion occurs
+
+
+Spring framework
+  Entity manager -manual setup
+     - LocalEntityManagerFactoryBean / LocalContainerEntityManagerFactoryBean
+  DataSource bean
+     - configuration of datasource
+  DataSource, EntityManagerFactory, and TransactionManager
+   OR
+   Configuration With XML
+
+
+
+Spring Boot configures Hibernate as the default JPA provider.
+ also auto-configure the dataSource bean, depending on the database we’re using.
+
+ JPA entity relationships
+ One to one
+ One to Many  - add foreign key in the many side ( Join column)
+ Many to one - add foreign key in the many side ( Join column)
+ Many to Many - use Joint Table
+
+ use onetomany in the list member
+ use manytoone in the single entity
+
+JPA
+Cascade types
+
+@EntityListeners annotation is used to configure AuditingEntityListener
+which contains the @PrePersist and @PreUpdate methods in order to capture auditing information
+
+
+Spring JDBC
+1.define datasource
+2.connect the datasource with the jdbctemplate
+3.execute queries using the jdbctemplate  example- jdbctemplate.update()  - jdbctemplate.query()
+
+@Qualifier
+if a interface is implemented by 2 classes. and if we want to inject the interface
+spring will not know which implemtation of the class to inject.
+so use @Qualifier and specify the desired class
+
+
+Spring Expections
+
+1. Spring BeanDefinitionStoreException
+  failure in storing bean definitions in application context-configuration errors.
+
+2. Spring BeanCreationException
+  Spring fails to create a bean,issues in its constructor or dependencies.
+
+3. Spring NoSuchBeanDefinitionException
+ retrieving a bean that doesn't exist.
+
+4. Unsatisfied Dependency in Spring
+ Indicates that Spring cannot fulfill a required dependency for a bean, typically because the dependency is not defined.
+
+5. The BeanDefinitionOverrideException in Spring Boot
+ Thrown when there are multiple bean definitions with the same name
+
+6. Spring DataIntegrityViolationException
+inserting a duplicate entry into a database.
+
+7. Guide to Spring NonTransientDataAccessException
+  related to database constraints.
+
+8. Spring ResponseStatusException
+ Used to send specific HTTP status codes in response to a web request
+
+9. MaxUploadSizeExceededException in Spring
+uploaded file exceeds the maximum allowed size defined in the application configuration.
+
+10. Spring Security Exceptions
+A group of exceptions thrown during authentication and authorization failures in a Spring Security context.
+
+11. No bean named ‘springSecurityFilterChain’ is defined
+Spring Security filter chain is not defined- due to improper configuration of Spring Security.
+
+
+
+springSecurity
+
+    return http.csrf(customizer -> customizer.disable()).
+                authorizeHttpRequests(request -> request.anyRequest().authenticated()).
+                formLogin(form -> form.loginPage()).
+                httpBasic(Customizer.withDefaults()).
+                sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)).build();
+
+
+.csrf(customizer -> customizer.disable())

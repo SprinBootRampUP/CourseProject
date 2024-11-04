@@ -1,0 +1,78 @@
+{
+  "title": "Java Programming",
+  "description": "A comprehensive course on Java programming.",
+  "sections": [
+    {
+      "name": "Introduction to Java",
+      "orderNumber": "1",
+      "lectures": [
+        {
+          "name": "Getting Started",
+          "resource": {
+            "name": "Getting Started Guide",
+            "size": 512,
+            "url": "http://sharan.com/getting-started-guide.pdf"
+          }
+        },
+        {
+          "name": "Variables and Data Types",
+          "resource": {
+            "name": "Data Types Cheat Sheet",
+            "size": 256,
+            "url": "http://sharan.com/data-types-cheat-sheet.pdf"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Object-Oriented Programming",
+      "orderNumber": "2",
+      "lectures": [
+        {
+          "name": "Classes and Objects",
+          "resource": {
+            "name": "Classes Overview",
+            "size": 300,
+            "url": "http://sharan.com/classes-overview.pdf"
+          }
+        },
+        {
+          "name": "Inheritance",
+          "resource": {
+            "name": "Inheritance Basics",
+            "size": 400,
+            "url": "http://sharan.com/inheritance-basics.pdf"
+          }
+        }
+      ]
+    }
+  ]
+}
+
+
+
+///////////////
+
+
+
+
+{
+  "title": "pl",
+  "description": "A comprehensive course on Java programming.",
+  "sections": [
+    {
+      "name": "Introduction to Java",
+      "orderNumber": "1",
+      "lectures": [
+        {
+          "name": "Getting Started",
+          "resource": {
+            "name": "Getting Started Guide",
+            "size": 512,
+            "url": "http://sharan.com/getting-started-guide.pdf"
+          }
+        }
+      ]
+    }
+  ]
+}

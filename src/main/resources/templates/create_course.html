@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Create Course</title>
+</head>
+<body>
+
+<div>
+  <h2>Create Course</h2>
+
+  <form th:action="@{/courses}" th:object="${course}" method="post">
+    <div>
+      <label for="courseTitle">Title:</label>
+      <input type="text"  id="courseTitle" th:field="*{courseTitle}" placeholder="Enter course title" >
+    </div>
+
+    <div>
+      <label for="description">Description:</label>
+      <textarea id="description"  th:field="*{description}"  placeholder="Course description"></textarea>
+    </div>
+
+    <div>
+      <label for="courseLevel">Course Level:</label>
+
+      <select id="courseLevel" th:field="*{courseLevel}">
+        <option value="BEGINNER">Beginner</option>
+        <option value="INTERMEDIATE">Intermediate</option>
+        <option value="ADVANCED">Advanced</option>
+
+      </select>
+
+    </div>
+
+    <div>
+      <label for="price">Price:</label>
+      <input id="price" type="text" th:field="*{price}" placeholder="Enter course price" >
+    </div>
+
+
+    <div>
+      <h2>Sections:</h2>
+      <div id="sectionsContainer">
+
+        <div id="section-0">
+          <input type="text" name="sections[0].name" placeholder="Section Name" >
+          <input type="text" name="sections[0].orderNumber" placeholder="Order Number" >
+
+          <div id="lecturesForSection0">
+            <h2>Lectures:</h2>
+            <div>
+              <input type="text" name="sections[0].lectures[0].name" placeholder="Lecture Name" >
+
+              <div>
+                <label>Resource:</label>
+                <br>
+                <input type="text" name="sections[0].lectures[0].resource.name" placeholder="Resource Name">
+                <input type="number" name="sections[0].lectures[0].resource.size" placeholder="Size">
+                <input type="text" name="sections[0].lectures[0].resource.url" placeholder="URL">
+              </div>
+            </div>
+          </div>
+          <br>
+          <button type="button" onclick="addLecture(0)">+ Add Lecture</button>
+        </div>
+      </div>
+      <br>
+      <button type="button" onclick="addSection()">+ Add Section</button>
+    </div>
+
+    <br>
+    <button type="submit">Create Course</button>
+  </form>
+</div>
+
+<script>
+  let sectionIndex = 1;
+
+  function addSection() {
+      const sectionContainer = document.getElementById('sectionsContainer');
+
+      const sectionHtml = `
+       <br>
+          <div id="section-${sectionIndex}">
+           <br>
+          <label>section-${sectionIndex+1} </label>
+              <input type="text" name="sections[${sectionIndex}].name" placeholder="Section Name" >
+              <input type="text" name="sections[${sectionIndex}].orderNumber" placeholder="Order Number" >
+
+              <div id="lecturesForSection${sectionIndex}">
+                  <label>Lectures:</label>
+                  <div>
+                      <input type="text" name="sections[${sectionIndex}].lectures[0].name" placeholder="Lecture Name" >
+
+                      <div>
+                          <label>Resource:</label>
+                          <input type="text" name="sections[${sectionIndex}].lectures[0].resource.name" placeholder="Resource Name">
+                          <input type="number" name="sections[${sectionIndex}].lectures[0].resource.size" placeholder="Size">
+                          <input type="text" name="sections[${sectionIndex}].lectures[0].resource.url" placeholder="URL">
+                      </div>
+                  </div>
+              </div>
+              <button type="button" onclick="addLecture(${sectionIndex})">+ Add Lecture</button>
+          </div>
+      `;
+
+      sectionContainer.insertAdjacentHTML('beforeend', sectionHtml);
+      sectionIndex++;
+  }
+
+  function addLecture(sectionIdx) {
+      const lecturesContainer = document.getElementById(`lecturesForSection${sectionIdx}`);
+      const lectureIndex = lecturesContainer.childElementCount;
+
+      const lectureHtml = `
+          <div>
+           <br>
+                    <label>lecture-${lectureIndex} </label>
+                    <br>
+              <input type="text" name="sections[${sectionIdx}].lectures[${lectureIndex}].name" placeholder="Lecture Name" >
+
+              <div>
+                  <label>Resource:</label>
+                  <input type="text" name="sections[${sectionIdx}].lectures[${lectureIndex}].resource.name" placeholder="Resource Name">
+                  <input type="number" name="sections[${sectionIdx}].lectures[${lectureIndex}].resource.size" placeholder="Size">
+                  <input type="text" name="sections[${sectionIdx}].lectures[${lectureIndex}].resource.url" placeholder="URL">
+              </div>
+          </div>
+      `;
+
+      lecturesContainer.insertAdjacentHTML('beforeend', lectureHtml);
+  }
+</script>
+
+</body>
+</html>

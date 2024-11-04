@@ -1,0 +1,48 @@
+<!--<!DOCTYPE html>-->
+<!--<html  lang="en" xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Title</title>-->
+<!--</head>-->
+<!--<body>-->
+
+<!--<div class="container">-->
+
+<!--    <div>-->
+<!--        <h1>Login</h1>-->
+<!--    </div>-->
+<!--    <div class="form-container">-->
+<!--<form th:action="@{/login}"  th:object="${user}" method="post">-->
+<!--    <div>-->
+<!--        <label for="email">Email:</label>-->
+<!--        <input type="text" id="email"    th:field="*{email}" />-->
+<!--    </div>-->
+
+<!--    <div>-->
+<!--        <label for="password">Password</label>-->
+<!--        <input type="text" id="password" th:field="*{password}" />-->
+<!--    </div>-->
+<!--    <button type="submit">Login</button>-->
+<!--    <p th:text="${error}"></p>-->
+<!--    <p>Don't have an account? <a th:href="@{/signup}">Sign up</a></p>-->
+
+<!--</form>-->
+<!--    </div>-->
+<!--</div>-->
+<!--</body>-->
+<!--</html>-->
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Login</title>
+</head>
+<body>
+<h2>Login</h2>
+<form th:action="@{/login}" method="post">
+    <input type="text" name="username" placeholder="Username" required />
+    <input type="password" name="password" placeholder="Password" required />
+    <button type="submit">Login</button>
+</form>
+</body>
+</html>
