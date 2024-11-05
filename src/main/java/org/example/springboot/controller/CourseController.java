@@ -18,12 +18,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.inject.Inject;
-import java.security.Principal;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+
 
 @Controller
 @RequestMapping("/courses")
@@ -56,10 +52,9 @@ public class CourseController {
 
     @PostMapping
     public String createCourse(@ModelAttribute("course") CourseDto courseDTO) {
-        // Call the service to create the course with the logged-in author
         courseService.addCourseWithSections(courseDTO);
         System.out.println(courseDTO);
-        return "redirect:/courses"; // Redirect to a course list or confirmation page
+        return "redirect:/courses";
     }
 
 

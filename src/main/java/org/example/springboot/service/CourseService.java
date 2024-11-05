@@ -29,15 +29,11 @@ public class CourseService {
 
     @Autowired
     private AuthorRespository authorRespository;
-   // @javax.annotation.Resource(name="CourseRepository")
-   // private CourseRepository courseRepository;
 
     @Autowired
     private ObjectMapper objectMapper;
 
-//    public List<Course> getCoursesByAuthor(Long authorId) {
-//        return courseRepository.findByAuthorsId(authorId);
-//    }
+
 
     @Transactional
     public void addCourseWithSections( CourseDto courseDto) {
@@ -90,14 +86,6 @@ public class CourseService {
         courseRepository.save(course);
 
 
-
-
-
-      //  return
-        //System.out.println("HIIIIIII"+course.toString());
-      //  log.info( course.toString(),course.getSections().toString());
-         //      Course c=  courseRepository.save(course);
-       // System.out.printf("qqqqqqqqq!!!!!!!!!!!" +c);
     }
 
     @Transactional
@@ -108,7 +96,6 @@ public class CourseService {
                 .map(this::convertToCourseDTO)
                 .collect(Collectors.toList());
 
-      //  return courseRepository.findAll();
     }
 
 //    public  List<Course> getCoursesByPages(int pageNo, int pageCount ,String sortBy,String sortOrder){
